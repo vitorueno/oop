@@ -1,0 +1,41 @@
+@startuml
+
+title Padrão adapter
+
+
+interface FormatoAudio {
+  + abrir(String arquivo): void
+  + reproduzir(): void 
+  + parar(): void
+}
+
+class WmaPlay {
+  - String file
+  - int location
+  - boolean playing
+  
+  + setFile(String file): void 
+  + open(): void
+  + setLocation(int): void
+  + play(): void
+  + stop(): void
+}
+
+
+class WmaPlayAdapter {
+  - WmaPlay wmaPlay
+  
+  
+}
+
+
+class AudioPlayer {
+  + main()
+}
+
+FormatoAudio <|-- WmaPlayAdapter 
+WmaPlayAdapter --> WmaPlay
+AudioPlayer --> FormatoAudio
+
+
+@enduml
